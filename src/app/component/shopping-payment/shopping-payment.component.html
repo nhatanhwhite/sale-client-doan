@@ -1,0 +1,138 @@
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y">
+  <div class="container" style="max-width: 720px;">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h4 class="card-title mb-4">Chi tiết đơn hàng</h4>
+            <dl class="dlist-align">
+              <dt>Số tiền cần thanh toán:</dt>
+              <dd class="text-right  h5"><strong>{{totalAmount | currency: 'VND':''}}đ</strong></dd>
+            </dl>
+          </div> <!-- card-body.// -->
+        </div> <!-- card .// -->
+    <div class="card mb-4">
+      <div class="card-body">
+        <h4 class="card-title mb-3">Thông tin giao hàng</h4>
+
+<!--        <div class="form-row">-->
+<!--          <div class="form-group col-sm-6">-->
+<!--            <label class="js-check box active">-->
+<!--              <input type="radio" name="dostavka" value="option1" checked>-->
+<!--              <h6 class="title">Standart delivery</h6>-->
+<!--              <p class="text-muted">Free by airline within 20 days</p>-->
+<!--            </label> &lt;!&ndash; js-check.// &ndash;&gt;-->
+<!--          </div>-->
+<!--          <div class="form-group col-sm-6">-->
+<!--            <label class="js-check box">-->
+<!--              <input type="radio" name="dostavka" value="option1">-->
+<!--              <h6 class="title">Fast delivery</h6>-->
+<!--              <p class="text-muted">Extra 20$ will be charged </p>-->
+<!--            </label> &lt;!&ndash; js-check.// &ndash;&gt;-->
+<!--          </div>-->
+<!--        </div> &lt;!&ndash; form row.// &ndash;&gt;-->
+
+<!--        <div class="form-row">-->
+        <form (ngSubmit)="onSubmit()" [formGroup]="myForm">
+          <div class="form-group">
+            <label>Họ tên</label>
+            <input type="text" class="form-control" placeholder="" formControlName="customerName" [ngClass]="{ 'is-invalid': submitted && f.customerName.errors}">
+            <div *ngIf="submitted && f.customerName.invalid" class="invalid-feedback">
+              <div *ngIf="f.customerName.errors?.required">Bạn chưa nhập họ tên</div>
+              <div *ngIf="f.customerName.errors?.maxlength">Họ tên phải nhỏ hơn 50 ký tự</div>
+            </div>
+          </div> <!-- form-group end.// -->
+
+          <div class="form-row">
+            <div class="col form-group">
+              <label>Email</label>
+              <input type="email" class="form-control" placeholder="" formControlName="customerEmail" [ngClass]="{ 'is-invalid': submitted && f.customerEmail.errors}">
+              <div *ngIf="submitted && f.customerEmail.invalid" class="invalid-feedback">
+                <div *ngIf="f.customerEmail.errors?.required">Bạn chưa nhập email</div>
+                <div *ngIf="f.customerEmail.errors?.email">Email không đúng định dạng</div>
+              </div>
+            </div> <!-- form-group end.// -->
+            <div class="col form-group">
+              <label>Số điện thoại</label>
+              <input type="text" class="form-control" placeholder="" formControlName="customerPhone" [ngClass]="{ 'is-invalid': submitted && f.customerPhone.errors}">
+              <div *ngIf="submitted && f.customerPhone.invalid" class="invalid-feedback">
+                <div *ngIf="f.customerPhone.errors?.required">Bạn chưa nhập số điện thoại</div>
+                <div *ngIf="f.customerPhone.errors?.pattern">Số điện thoại không đúng định dạng</div>
+              </div>
+            </div> <!-- form-group end.// -->
+          </div> <!-- form-row end.// -->
+          <div class="form-group">
+            <label>Địa chỉ</label>
+            <textarea class="form-control" rows="2" formControlName="address" [ngClass]="{ 'is-invalid': submitted && f.address.errors}"></textarea>
+            <div *ngIf="submitted && f.address.invalid" class="invalid-feedback">
+              <div *ngIf="f.address.errors?.required">Bạn chưa nhập Địa chỉ</div>
+              <div *ngIf="f.address.errors?.maxlength">Địa chỉ phải nhỏ hơn 255 ký tự</div>
+            </div>
+          </div> <!-- form-group// -->
+          <button style="margin-top: 10px;" class="subscribe btn btn-primary btn-block" type="submit"> Đặt hàng  </button>
+        </form>
+
+      </div> <!-- card-body.// -->
+
+    </div>  <!-- card .// -->
+
+
+<!--    <div class="card mb-4">-->
+<!--      <div class="card-body">-->
+<!--        <h4 class="card-title mb-4">Payment</h4>-->
+<!--        <form role="form" style="max-width:380px;">-->
+<!--          <div class="form-group">-->
+<!--            <label for="username">Name on card</label>-->
+<!--            <input type="text" class="form-control" name="username" placeholder="Ex. John Smith" required="">-->
+<!--          </div> &lt;!&ndash; form-group.// &ndash;&gt;-->
+
+<!--          <div class="form-group">-->
+<!--            <label for="cardNumber">Card number</label>-->
+<!--            <div class="input-group">-->
+<!--              <input type="text" class="form-control" name="cardNumber" placeholder="">-->
+<!--              <div class="input-group-append">-->
+<!--					<span class="input-group-text">-->
+<!--						<i class="fab fa-cc-visa"></i> &nbsp; <i class="fab fa-cc-amex"></i> &nbsp;-->
+<!--						<i class="fab fa-cc-mastercard"></i>-->
+<!--					</span>-->
+<!--              </div>-->
+<!--            </div> &lt;!&ndash; input-group.// &ndash;&gt;-->
+<!--          </div> &lt;!&ndash; form-group.// &ndash;&gt;-->
+
+<!--          <div class="row">-->
+<!--            <div class="col-md flex-grow-0">-->
+<!--              <div class="form-group">-->
+<!--                <label class="hidden-xs">Expiration</label>-->
+<!--                <div class="form-inline" style="min-width: 220px">-->
+<!--                  <select class="form-control" style="width:100px">-->
+<!--                    <option>MM</option>-->
+<!--                    <option>01 - Janiary</option>-->
+<!--                    <option>02 - February</option>-->
+<!--                    <option>03 - February</option>-->
+<!--                  </select>-->
+<!--                  <span style="width:20px; text-align: center"> / </span>-->
+<!--                  <select class="form-control" style="width:100px">-->
+<!--                    <option>YY</option>-->
+<!--                    <option>2018</option>-->
+<!--                    <option>2019</option>-->
+<!--                  </select>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-3">-->
+<!--              <div class="form-group">-->
+<!--                <label data-toggle="tooltip" title="3 digits code on back side of the card">CVV <i class="fa fa-question-circle"></i></label>-->
+<!--                <input class="form-control" required="" type="text">-->
+<!--              </div> &lt;!&ndash; form-group.// &ndash;&gt;-->
+<!--            </div>-->
+<!--          </div> &lt;!&ndash; row.// &ndash;&gt;-->
+<!--          <button class="subscribe btn btn-primary btn-block" type="button"> Confirm  </button>-->
+<!--        </form>-->
+<!--      </div> &lt;!&ndash; card-body.// &ndash;&gt;-->
+<!--    </div> &lt;!&ndash; card .// &ndash;&gt;-->
+
+
+    <br><br>
+
+  </div> <!-- container .//  -->
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->

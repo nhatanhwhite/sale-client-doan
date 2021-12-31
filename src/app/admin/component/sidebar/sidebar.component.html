@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <div class="container">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_top" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbar_top">
+      <ul class="navbar-nav mr-md-auto">
+        <li><a routerLink="/home-admin/main-admin" class="nav-link">Trang Chủ</a></li>
+        <li *ngIf="showAdminBoard"><a routerLink="/home-admin/list-user" class="nav-link"> Người dùng </a></li>
+<!--        <li><a href="#" class="nav-link"> Menu item </a></li>-->
+        <li *ngIf="showAdminBoard"><a routerLink="/home-admin/list-category" class="nav-link"> Danh mục sản phẩm </a></li>
+        <li *ngIf="showAdminBoard"><a routerLink="/home-admin/list-product" class="nav-link"> Sản phẩm </a></li>
+<!--        <li *ngIf="showAdminBoard"><a routerLink="/home-admin/list-thoroughbred" class="nav-link"> </a></li>-->
+        <li *ngIf="showAdminBoard"><a routerLink="/home-admin/list-category-news" class="nav-link"> Danh mục tin tức </a></li>
+        <li *ngIf="showAdminBoard"><a routerLink="/home-admin/list-news" class="nav-link"> Tin tức </a></li>
+        <li *ngIf="showAdminBoard"><a routerLink="/home-admin/order" class="nav-link"> Đơn hàng </a></li>
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item"><a routerLink="/home/main" class="nav-link"> Cửa Hàng </a></li>
+        <li class="nav-item"><a (click)="onLogOut()" style="cursor: pointer" class="nav-link"> Đăng xuất </a></li>
+
+<!--        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> USD </a>-->
+<!--          <ul class="dropdown-menu dropdown-menu-right">-->
+<!--            <li><a class="dropdown-item" href="#">EUR</a></li>-->
+<!--            <li><a class="dropdown-item" href="#">AED</a></li>-->
+<!--            <li><a class="dropdown-item" href="#">RUBL </a></li>-->
+<!--          </ul>-->
+<!--        </li>-->
+<!--        <li class="nav-item dropdown"><a  class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">   Language </a>-->
+<!--          <ul class="dropdown-menu dropdown-menu-right">-->
+<!--            <li><a class="dropdown-item" href="#">English</a></li>-->
+<!--            <li><a class="dropdown-item" href="#">Arabic</a></li>-->
+<!--            <li><a class="dropdown-item" href="#">Russian </a></li>-->
+<!--          </ul>-->
+<!--        </li>-->
+      </ul> <!-- navbar-nav.// -->
+    </div> <!-- collapse.// -->
+  </div>
+</nav>
+
+

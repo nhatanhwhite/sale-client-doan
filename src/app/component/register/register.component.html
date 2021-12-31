@@ -1,0 +1,128 @@
+<!--breadcrumbs area start-->
+<div class="breadcrumbs_area other_bread">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="breadcrumb_content">
+          <ul>
+            <li><a href="index.html">home</a></li>
+            <li>/</li>
+            <li>sign</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--breadcrumbs area end-->
+
+<!-- customer login start -->
+<div class="customer_login">
+  <div class="container">
+    <div class="row">
+      <!--login area start-->
+      <div class="col-lg-3 col-md-3">
+
+      </div>
+      <div class="col-lg-6 col-md-6">
+        <div class="account_form">
+          <h2>Đăng kí</h2>
+          <form (ngSubmit)="onSubmit()" [formGroup]="myForm">
+            <p>
+              <label>Họ tên <span>*</span></label>
+              <input type="text" formControlName="fullName"  placeholder="" [ngClass]="{ 'is-invalid': submitted && f.fullName.errors}">
+            </p>
+            <div *ngIf="submitted && f.fullName.invalid" class="text-danger">
+              <div *ngIf="f.fullName.errors?.required">Bạn chưa nhập họ tên</div>
+              <div *ngIf="f.fullName.errors?.maxlength">Họ tên phải nhỏ hơn 50 ký tự</div>
+            </div>
+
+            <p>
+              <label>Số điện thoại <span>*</span></label>
+              <input type="text" formControlName="phone"  placeholder="" >
+            </p>
+            <div *ngIf="submitted && f.phone.invalid" class="text-danger">
+              <div *ngIf="f.phone.errors?.required">Bạn chưa nhập sdt</div>
+            </div>
+
+            <p>
+              <label>Email <span>*</span></label>
+              <input type="email" formControlName="email"  placeholder="" >
+              <small class="form-text text-muted">Chung tôi sẽ không chia sẻ email cho bất kỳ ai khác</small>
+            </p>
+            <div *ngIf="submitted && f.email.invalid" class="text-danger">
+              <div *ngIf="f.email.errors?.required">Bạn chưa nhập email</div>
+            </div>
+            <p>
+              <label>Mật khẩu <span>*</span></label>
+              <input type="text" formControlName="password"  placeholder="" >
+            </p>
+            <div *ngIf="submitted && f.password.invalid" class="text-danger">
+              <div *ngIf="f.password.errors?.required">Bạn chưa nhập mật khẩu</div>
+            </div>
+            <p>
+              <label>Ngày sinh <span>*</span></label>
+              <input style="font-size: 14px" type="date" formControlName="dateOfBirth"  class="form-control" placeholder="" >
+            </p>
+            <div *ngIf="submitted && f.dateOfBirth.invalid" class="text-danger">
+              <div *ngIf="f.dateOfBirth.errors?.required">Bạn chưa nhập ngày sinh</div>
+            </div>
+
+            <p>
+              <label>Giới tính <span>*</span></label>
+              <select style="font-size: 14px"  class="form-control" formControlName="gender">
+                <option  value="Nam">Nam</option>
+                <option value="Nữ">Nữ</option>
+              </select>
+            </p>
+            <div *ngIf="submitted && f.gender.invalid" class="text-danger">
+              <div *ngIf="f.gender.errors?.required">Bạn chưa nhập giới tính</div>
+            </div>
+
+            <p>
+              <label>Địa chỉ nhà <span>*</span></label>
+              <input type="text" formControlName="specificAddress"  placeholder="" >
+            </p>
+            <div *ngIf="submitted && f.specificAddress.invalid" class="text-danger">
+              <div *ngIf="f.specificAddress.errors?.required">Bạn chưa nhập địa chỉ nhà</div>
+            </div>
+            <p>
+              <label>Xã, Phường<span>*</span></label>
+              <input type="text" formControlName="province"  placeholder="" >
+            </p>
+            <div *ngIf="submitted && f.province.invalid" class="text-danger">
+              <div *ngIf="f.province.errors?.required">Bạn chưa nhập xã,phường</div>
+            </div>
+            <p>
+              <label>Quận, huyện <span>*</span></label>
+              <input type="text" formControlName="district"  placeholder="" >
+            </p>
+            <div *ngIf="submitted && f.district.invalid" class="text-danger">
+              <div *ngIf="f.district.errors?.required">Bạn chưa nhập tên đường</div>
+            </div>
+            <p>
+              <label>Tỉnh, thành phố <span>*</span></label>
+              <input type="text" formControlName="wards"  placeholder="" >
+            </p>
+            <div *ngIf="submitted && f.wards.invalid" class="text-danger">
+              <div *ngIf="f.wards.errors?.required">Bạn chưa nhập tỉnh, thành phố</div>
+            </div>
+
+            <div class="login_submit">
+              <button type="submit">Đăng ký</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3">
+
+      </div>
+      <!--login area start-->
+
+
+    </div>
+  </div>
+</div>
+<!-- customer login end -->
+

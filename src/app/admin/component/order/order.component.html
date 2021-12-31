@@ -1,0 +1,61 @@
+<div class="row justify-content-center mt-2">
+  <div class="col-sm-12">
+<!--    <a class="btn btn-primary" routerLink="/home-admin/add-category">Thêm mới</a>-->
+    <!--        <h2 class="text-success">Danh sách danh mục sản phẩm</h2>-->
+
+<!--    <div class="alert alert-warning" role="alert" *ngIf="categories && categories.length === 0">-->
+<!--      Không có dữ liệu danh mục sản phẩm-->
+<!--    </div>-->
+
+    <div class="table-responsive lb-table lb-scroll" *ngIf="orders && orders.length > 0">
+      <table class="table">
+        <thead class="thead-dark">
+        <tr>
+          <th>Mã đơn hàng</th>
+          <th>Tên khách hàng</th>
+          <th>Địa chỉ</th>
+          <th>Email</th>
+          <th>Số điện thoại</th>
+          <th>Trạng thái</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let order of orders">
+          <td>{{ order.id }}</td>
+          <td>{{ order.customerName }}</td>
+          <td>{{ order.address }}</td>
+          <td>{{ order.customerEmail }}</td>
+          <td>{{ order.customerPhone }}</td>
+          <td><span class="badge text-black-50" [ngClass]="order.status == 1 ? 'badge-danger' : 'badge-success'">{{ order.status == 1 ? 'Chưa thanh toán' : 'Đã thanh toán' }}</span></td>
+<!--          <td>{{ category.lastUpdate | date:'dd-MM-yyyy' }}</td>-->
+<!--          <td>{{ category.userSystem?.fullName }}</td>-->
+          <td>
+            <button type="button" class="btn btn-info" routerLink="/home-admin/order/{{order.id}}">Chi tiết</button> |
+            <button type="button" class="btn btn-success" (click)="thanhToan(order.id)">Thanh toán</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Xóa</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Bạn có chắc chắn muốn xóa không ?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+<!--            <button type="button" class="btn btn-primary" (click)="confirmDelete()" data-bs-dismiss="modal">Xóa</button>-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

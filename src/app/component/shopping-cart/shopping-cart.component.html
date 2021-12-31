@@ -1,0 +1,103 @@
+<!--breadcrumbs area start-->
+<div class="breadcrumbs_area other_bread">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="breadcrumb_content">
+          <ul>
+            <li><a href="index.html">home</a></li>
+            <li>/</li>
+            <li>cart</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--breadcrumbs area end-->
+
+<!-- shopping cart area start -->
+<div class="shopping_cart_area">
+  <div class="container">
+    <form action="#">
+      <div class="row">
+        <div class="col-12">
+          <div class="table_desc">
+            <div class="cart_page table-responsive">
+              <table>
+                <thead>
+                <tr>
+                  <th class="product_remove">Xoá đơn hàng</th>
+                  <th class="product_thumb">Hình ảnh</th>
+                  <th class="product_name">Tên sản phẩm</th>
+                  <th class="product-price">Giá thành</th>
+                  <th class="product_quantity">Số lượng</th>
+                  <th class="product_total">Tổng tiền</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let item of items">
+                  <td class="product_remove"><a (click)="onRemove(item.productId)"><i class="fa fa-trash-o"></i></a></td>
+                  <td class="product_thumb"><a routerLink="/home/product-detail/{{item.productId}}"><img style="max-width: 60px" [src]="item.productDTO?.productImages[0].image" alt=""></a></td>
+                  <td class="product_name"><a routerLink="/home/product-detail/{{item.productId}}">{{item.productDTO?.productName}}</a></td>
+                  <td class="product-price">{{ (item.productDTO.sale > 0 ? item.productDTO.priceSell - (item.productDTO.priceSell * item.productDTO.sale)/100 : item.productDTO.priceSell) | currency: 'VND':''}}đ</td>
+                  <td class="product_quantity"><input min="1" max="100" value="{{item.quantity}}" type="number" disabled></td>
+                  <td class="product_total">{{(item.productDTO.sale > 0 ? item.productDTO.priceSell - (item.productDTO.priceSell * item.productDTO.sale)/100 : item.productDTO.priceSell)*item.quantity | currency: 'VND':''}}đ</td>
+                </tr>
+
+                </tbody>
+              </table>
+            </div>
+            <div class="cart_submit">
+<!--              <button  type="button">update cart</button>-->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--coupon code area start-->
+      <div class="coupon_area">
+        <div class="row">
+          <div class="col-lg-6 col-md-6">
+            <div class="coupon_code left">
+              <h3>Phiếu mua hàng</h3>
+              <div class="coupon_inner">
+                <p>Nhập mã giảm giá của bạn.</p>
+                <input placeholder="Coupon code" type="text">
+                <button type="submit">Apply</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6">
+            <div class="coupon_code right">
+              <h3>Tổng đơn hàng</h3>
+              <div class="coupon_inner">
+<!--                <div class="cart_subtotal">-->
+<!--                  <p>Subtotal</p>-->
+<!--                  <p class="cart_amount">£215.00</p>-->
+<!--                </div>-->
+<!--                <div class="cart_subtotal ">-->
+<!--                  <p>Shipping</p>-->
+<!--                  <p class="cart_amount"><span>Flat Rate:</span> £255.00</p>-->
+<!--                </div>-->
+<!--                <a href="#">Calculate shipping</a>-->
+
+                <div class="cart_subtotal">
+                  <p>Thành tiền</p>
+                  <p class="cart_amount">{{total | currency: 'VND':''}}đ</p>
+                </div>
+                <div class="checkout_btn">
+                  <button  (click)="onPayment()">Đặt hàng</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--coupon code area end-->
+
+    </form>
+  </div>
+</div>
+<!-- shopping cart area end -->
+

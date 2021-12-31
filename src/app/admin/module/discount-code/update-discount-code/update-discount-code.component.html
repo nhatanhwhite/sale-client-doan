@@ -1,0 +1,38 @@
+<div class="row justify-content-center mt-2">
+    <div class="col-8">
+        <h3 class="text-center text-success">CẬP NHẬT MÃ GIẢM GIÁ</h3>
+
+        <form (ngSubmit)="onSubmit()" [formGroup]="myForm">
+            <div class="mb-3" [hidden]="true">
+                <input type="text" class="form-control" placeholder="Id" formControlName="id" [ngClass]="{ 'is-invalid': submitted && f.id.errors}" readonly>
+
+                <div *ngIf="submitted && f.id.invalid" class="invalid-feedback">
+                    <div *ngIf="f.id.errors?.required">Bạn chưa nhập id</div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="discountCode" class="form-label">Mã giảm giá</label>
+                <input type="text" class="form-control" placeholder="Mã giảm giá" formControlName="discountCode" [ngClass]="{ 'is-invalid': submitted && f.discountCode.errors}" readonly>
+
+                <div *ngIf="submitted && f.discountCode.invalid" class="invalid-feedback">
+                    <div *ngIf="f.discountCode.errors?.required">Bạn chưa nhập mã giảm giá</div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="discount" class="form-label">Số tiền giảm</label>
+                <input type="number" class="form-control" placeholder="Nhập mức giảm giá" formControlName="discount" [ngClass]="{ 'is-invalid': submitted && f.discount.errors}">
+
+                <div *ngIf="submitted && f.discount.invalid" class="invalid-feedback">
+                    <div *ngIf="f.discount.errors?.required">Bạn chưa nhập mức giảm giá</div>
+                    <div *ngIf="f.discount.errors?.max">Mức giảm giá phải nhỏ hơn 1000000000</div>
+                    <div *ngIf="f.discount.errors?.min">Mức giảm giá phải từ 1đ tở lên</div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Lưu</button>
+            <button type="button" class="btn btn-secondary ms-2" (click)="onBack()">Quay lại</button>
+        </form>
+    </div>
+</div>

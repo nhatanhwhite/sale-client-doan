@@ -1,0 +1,76 @@
+<div class="row justify-content-center mt-2 mb-2">
+    <div class="col-12" *ngIf="productDTO">
+        <h3 class="text-center text-success">CHI TIẾT SẢN PHẨM</h3>
+        <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
+            <div class="carousel-inner">
+                <div [ngClass]="i===0 ? 'carousel-item active' : 'carousel-item'" *ngFor="let url of productImages; let i = index">
+                    <img [src]="url.image" class="d-block w-100 image-detail">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <table class="table table-bordered border-primary">
+            <tr>
+                <th>Tên sản phẩm</th>
+                <td>{{ productDTO.productName }}</td>
+            </tr>
+            <tr>
+                <th>Giới thiệu</th>
+                <td style="white-space: pre-wrap">{{ productDTO.introduce }}</td>
+            </tr>
+            <tr>
+                <th>Mô tả</th>
+                <td style="white-space: pre-wrap">{{ productDTO.description }}</td>
+            </tr>
+            <tr>
+                <th>Giá nhập</th>
+                <td>{{ productDTO.priceImport | currency: 'VND':'' }}đ</td>
+            </tr>
+            <tr>
+                <th>Giá bán</th>
+                <td>{{ productDTO.priceSell | currency: 'VND':'' }}đ</td>
+            </tr>
+            <tr>
+                <th>Số lượng nhập</th>
+                <td>{{ productDTO.quantityImport }}</td>
+            </tr>
+            <tr>
+                <th>Số lượng đã bán</th>
+                <td>{{ productDTO.quantitySell }}</td>
+            </tr>
+            <tr>
+                <th>Số lượng hiện tại</th>
+                <td>{{ productDTO.inventory }}</td>
+            </tr>
+            <tr>
+                <th>Khuyến mại</th>
+                <td>{{ productDTO.sale }}</td>
+            </tr>
+            <tr>
+                <th>Ngày cập nhật</th>
+                <td>{{ productDTO.lastUpdate | date:'dd-MM-yyyy' }}</td>
+            </tr>
+            <!--<tr>
+                <th>Thuần chủng</th>
+                <td>{{ productDTO.thoroughbred?.purebredLevel }} %</td>
+            </tr>-->
+            <tr>
+                <th>Danh mục</th>
+                <td>{{ productDTO.category?.categoryName }}</td>
+            </tr>
+            <tr>
+                <th>Người tạo</th>
+                <td>{{ productDTO.userSystem?.fullName }}</td>
+            </tr>
+        </table>
+        <button type="button" class="btn btn-secondary mb-3" (click)="onBack()">Quay lại</button>
+    </div>
+</div>

@@ -1,0 +1,138 @@
+<div class="row p-1">
+    <h3 CLASS="text-primary text-center">THÔNG TIN THANH TOÁN</h3>
+    <div class="col-sm-7 border border-danger">
+        <form class="row g-3" (ngSubmit)="onSubmit()" [formGroup]="myForm">
+            <div class="col-sm-12" [hidden]="true">
+                <label for="id" class="form-label">Id</label>
+                <input type="text" class="form-control" formControlName="id">
+            </div>
+
+            <div class="col-sm-6">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" placeholder="Nhập email" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors}">
+
+                <div *ngIf="submitted && f.email.invalid" class="invalid-feedback">
+                    <div *ngIf="f.email.errors?.required">Bạn chưa nhập email</div>
+                    <div *ngIf="f.email.errors?.email">Email không đúng định dạng</div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <label for="phone" class="form-label">Số điện thoại</label>
+                <input type="text" class="form-control" placeholder="Nhập số điện thoại" formControlName="phone" [ngClass]="{ 'is-invalid': submitted && f.phone.errors}">
+
+                <div *ngIf="submitted && f.phone.invalid" class="invalid-feedback">
+                    <div *ngIf="f.phone.errors?.required">Bạn chưa nhập số điện thoại</div>
+                    <div *ngIf="f.phone.errors?.pattern">Số điện thoại không đúng định dạng</div>
+                </div>
+            </div>
+
+            <div class="col-sm-12">
+                <label for="fullName" class="form-label">Họ tên</label>
+                <input type="text" class="form-control" placeholder="Nhập họ tên" formControlName="fullName" [ngClass]="{ 'is-invalid': submitted && f.fullName.errors}">
+
+                <div *ngIf="submitted && f.fullName.invalid" class="invalid-feedback">
+                    <div *ngIf="f.fullName.errors?.required">Bạn chưa nhập họ tên</div>
+                    <div *ngIf="f.fullName.errors?.maxlength">Họ tên phải nhỏ hơn 50 ký tự</div>
+                </div>
+            </div>
+
+            <div class="col-sm-12">
+                <label for="specificAddress" class="form-label">Địa chỉ nhà</label>
+                <input type="text" class="form-control" placeholder="Nhập số nhà - ngõ - tên đường" formControlName="specificAddress" [ngClass]="{ 'is-invalid': submitted && f.specificAddress.errors}">
+
+                <div *ngIf="submitted && f.specificAddress.invalid" class="invalid-feedback">
+                    <div *ngIf="f.specificAddress.errors?.required">Bạn chưa nhập địa chỉ nhà</div>
+                    <div *ngIf="f.specificAddress.errors?.maxlength">Địa chỉ nhà phải nhỏ hơn 255 ký tự</div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <label for="wards" class="form-label">Xã/Phường/Thị Trấn</label>
+                <input type="text" class="form-control" placeholder="Nhập tên Xã/Phường/Thị Trấn" formControlName="wards" [ngClass]="{ 'is-invalid': submitted && f.wards.errors}">
+
+                <div *ngIf="submitted && f.wards.invalid" class="invalid-feedback">
+                    <div *ngIf="f.wards.errors?.required">Bạn chưa nhập tên xã/phường/thị trấn</div>
+                    <div *ngIf="f.wards.errors?.maxlength">Tên xã/phường/thị trấn phải nhỏ hơn 255 ký tự</div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <label for="district" class="form-label">Quận/Huyện</label>
+                <input type="text" class="form-control" placeholder="Nhập tên Quận/Huyện" formControlName="district" [ngClass]="{ 'is-invalid': submitted && f.district.errors}">
+
+                <div *ngIf="submitted && f.district.invalid" class="invalid-feedback">
+                    <div *ngIf="f.district.errors?.required">Bạn chưa nhập tên quận/huyện</div>
+                    <div *ngIf="f.district.errors?.maxlength">Tên quận/huyện phải nhỏ hơn 255 ký tự</div>
+                </div>
+            </div>
+
+            <div class="col-sm-12">
+                <label for="province" class="form-label">Tỉnh/Thành Phố</label>
+                <input type="text" class="form-control" placeholder="Nhập tên Tỉnh/Thành Phố" formControlName="province" [ngClass]="{ 'is-invalid': submitted && f.province.errors}">
+
+                <div *ngIf="submitted && f.province.invalid" class="invalid-feedback">
+                    <div *ngIf="f.province.errors?.required">Bạn chưa nhập tên tỉnh/thành phố</div>
+                    <div *ngIf="f.province.errors?.maxlength">Tên tỉnh/thành phố phải nhỏ hơn 255 ký tự</div>
+                </div>
+            </div>
+
+            <div class="col-12 mb-3">
+                <button type="submit" class="btn btn-primary">Sửa thông tin</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-sm-5">
+        <div class="card">
+            <div class="card-header text-center fw-bold">
+                ĐƠN HÀNG CỦA BẠN
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Sản phẩm</th>
+                            <th scope="col">Thành tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Mark</td>
+                            <td class="text-black fw-bold">1.000.000 đ</td>
+                        </tr>
+                        <tr>
+                            <td>Mark</td>
+                            <td class="text-black fw-bold">1.000.000 đ</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-black"><i class="bi bi-currency-exchange"></i> Tổng tiền sản phẩm</td>
+                            <td class="text-black fw-bold">1.000 đ</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-primary"><i class="bi bi-truck"></i> Phí vận chuyển</td>
+                            <td class="fw-bold text-primary">1.000 đ</td>
+                        </tr>
+                        <tr>
+                            <td class="text-success fw-bold"><i class="bi bi-tag-fill"></i> Mã giảm giá</td>
+                            <td>
+                                <button type="button" class="btn btn-outline-success">Chọn mã giảm giá</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td class="text-danger fw-bold">Tổng tiền thanh toán</td>
+                            <td class="text-danger fw-bold">1.000.000 đ</td>
+                        </tr>
+                    </tfoot>
+                </table>
+
+            </div>
+            <div class="card-footer text-muted">
+                <div class="d-grid gap-2">
+                    <button class="btn btn-danger" type="button">Đặt hàng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

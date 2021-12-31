@@ -1,0 +1,52 @@
+<!--breadcrumbs area start-->
+<div class="breadcrumbs_area">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="breadcrumb_content">
+          <ul>
+            <li><a href="index.html">Trang chủ</a></li>
+            <li>/</li>
+            <li>shop</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--breadcrumbs area end-->
+
+<!--shop  area start-->
+<div class="shop_area shop_reverse">
+  <div class="container">
+    <div class="table-responsive lb-table lb-scroll" *ngIf="orders && orders.length > 0">
+      <table class="table">
+        <thead class="thead-dark">
+        <tr>
+          <th>Mã đơn hàng</th>
+          <th>Tên khách hàng</th>
+          <th>Địa chỉ</th>
+          <th>Email</th>
+          <th>Số điện thoại</th>
+          <th>Trạng thái</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let order of orders; let i = index">
+          <td>#{{ (i + 1) }}</td>
+          <td>{{ order.customerName }}</td>
+          <td>{{ order.address }}</td>
+          <td>{{ order.customerEmail }}</td>
+          <td>{{ order.customerPhone }}</td>
+          <td><span class="badge text-black-50" [ngClass]="order.status == 1 ? 'badge-danger' : 'badge-success'">{{ order.status == 1 ? 'Chưa thanh toán' : 'Đã thanh toán' }}</span></td>
+          <!--          <td>{{ category.lastUpdate | date:'dd-MM-yyyy' }}</td>-->
+          <!--          <td>{{ category.userSystem?.fullName }}</td>-->
+
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!--shop  area end-->

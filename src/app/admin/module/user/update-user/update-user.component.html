@@ -1,0 +1,121 @@
+<div class="row justify-content-center mt-2 mb-2">
+    <div class="col-sm-8">
+        <h3 class="text-center text-success">Cập nhật tài khoản</h3>
+
+        <form class="row g-3" (ngSubmit)="onSubmit()" [formGroup]="myForm">
+            <div class="col-sm-12" [hidden]="true">
+                <input type="email" class="form-control" formControlName="id" readonly>
+            </div>
+            <div class="col-sm-6">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" placeholder="Nhập email" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors}">
+
+                <div *ngIf="submitted && f.email.invalid" class="invalid-feedback">
+                    <div *ngIf="f.email.errors?.required">Bạn chưa nhập email</div>
+                    <div *ngIf="f.email.errors?.email">Email không đúng định dạng</div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <label for="fullName" class="form-label">Họ tên</label>
+                <input type="text" class="form-control" placeholder="Nhập họ tên" formControlName="fullName" [ngClass]="{ 'is-invalid': submitted && f.fullName.errors}">
+
+                <div *ngIf="submitted && f.fullName.invalid" class="invalid-feedback">
+                    <div *ngIf="f.fullName.errors?.required">Bạn chưa nhập họ tên</div>
+                    <div *ngIf="f.fullName.errors?.maxlength">Họ tên phải nhỏ hơn 50 ký tự</div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <label for="dateOfBirth" class="form-label">Ngày sinh</label>
+                <input type="date" class="form-control" formControlName="dateOfBirth" [ngClass]="{ 'is-invalid': submitted && f.dateOfBirth.errors}">
+
+                <div *ngIf="submitted && f.dateOfBirth.invalid" class="invalid-feedback">
+                    <div *ngIf="f.dateOfBirth.errors?.required">Bạn chưa nhập ngày sinh</div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <label for="phone" class="form-label">Số điện thoại</label>
+                <input type="text" class="form-control" placeholder="Nhập số điện thoại" formControlName="phone" [ngClass]="{ 'is-invalid': submitted && f.phone.errors}">
+
+                <div *ngIf="submitted && f.phone.invalid" class="invalid-feedback">
+                    <div *ngIf="f.phone.errors?.required">Bạn chưa nhập số điện thoại</div>
+                    <div *ngIf="f.phone.errors?.pattern">Số điện thoại không đúng định dạng</div>
+                </div>
+            </div>
+
+            <div class="col-sm-12">
+                <label for="gender" class="form-label">Giới tính</label>&nbsp;
+                <input type="radio" formControlName="gender" [ngClass]="{ 'is-invalid': submitted && f.gender.errors}" value="Nam"> Nam
+
+                <input type="radio" formControlName="gender" [ngClass]="{ 'is-invalid': submitted && f.gender.errors}" value="Nữ"> Nữ
+
+                <div *ngIf="submitted && f.gender.invalid" class="invalid-feedback">
+                    <div *ngIf="f.gender.errors?.required">Bạn chưa chọn giới tính</div>
+                </div>
+            </div>
+
+            <div class="col-sm-12">
+                <label for="specificAddress" class="form-label">Địa chỉ nhà</label>
+                <input type="text" class="form-control" placeholder="Nhập số nhà - ngõ - tên đường" formControlName="specificAddress" [ngClass]="{ 'is-invalid': submitted && f.specificAddress.errors}">
+
+                <div *ngIf="submitted && f.specificAddress.invalid" class="invalid-feedback">
+                    <div *ngIf="f.specificAddress.errors?.required">Bạn chưa nhập địa chỉ nhà</div>
+                    <div *ngIf="f.specificAddress.errors?.maxlength">Địa chỉ nhà phải nhỏ hơn 255 ký tự</div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <label for="wards" class="form-label">Xã/Phường/Thị Trấn</label>
+                <input type="text" class="form-control" placeholder="Nhập tên Xã/Phường/Thị Trấn" formControlName="wards" [ngClass]="{ 'is-invalid': submitted && f.wards.errors}">
+
+                <div *ngIf="submitted && f.wards.invalid" class="invalid-feedback">
+                    <div *ngIf="f.wards.errors?.required">Bạn chưa nhập tên xã/phường/thị trấn</div>
+                    <div *ngIf="f.wards.errors?.maxlength">Tên xã/phường/thị trấn phải nhỏ hơn 255 ký tự</div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <label for="district" class="form-label">Quận/Huyện</label>
+                <input type="text" class="form-control" placeholder="Nhập tên Quận/Huyện" formControlName="district" [ngClass]="{ 'is-invalid': submitted && f.district.errors}">
+
+                <div *ngIf="submitted && f.district.invalid" class="invalid-feedback">
+                    <div *ngIf="f.district.errors?.required">Bạn chưa nhập tên quận/huyện</div>
+                    <div *ngIf="f.district.errors?.maxlength">Tên quận/huyện phải nhỏ hơn 255 ký tự</div>
+                </div>
+            </div>
+
+            <div class="col-sm-12">
+                <label for="province" class="form-label">Tỉnh/Thành Phố</label>
+                <input type="text" class="form-control" placeholder="Nhập tên Tỉnh/Thành Phố" formControlName="province" [ngClass]="{ 'is-invalid': submitted && f.province.errors}">
+
+                <div *ngIf="submitted && f.province.invalid" class="invalid-feedback">
+                    <div *ngIf="f.province.errors?.required">Bạn chưa nhập tên tỉnh/thành phố</div>
+                    <div *ngIf="f.province.errors?.maxlength">Tên tỉnh/thành phố phải nhỏ hơn 255 ký tự</div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" value="ROLE_ADMIN" [checked]="showAdminBoard" (change)="handleCheckBoxA(checkboxA.checked, checkboxA.value)" #checkboxA id="gridCheck1">
+                    <label class="form-check-label" for="gridCheck1">
+                        Admin
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" value="ROLE_USER" [checked]="showModeratorBoard" (change)="handleCheckBoxU(checkboxB.checked, checkboxB.value)" #checkboxB id="gridCheck2">
+                    <label class="form-check-label" for="gridCheck2">
+                        User
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Cập nhật thông tin</button>
+                <button type="button" class="btn btn-secondary ms-2" (click)="onBack()">Quay lại</button>
+            </div>
+        </form>
+    </div>
+</div>
